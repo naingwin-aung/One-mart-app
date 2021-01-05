@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    background-color: white;
+}
+
+.hero {
+    min-height: 100vh;
+    background-image: url(../images/hero.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero h2 {
+    font-size: 4rem;
+}
+
+.hero-btn {
+    padding: 10px 40px;
+    color: white;
+    font-size: larger;
+    background-color: #54b84d;
+    border: 2px solid #54b84d;
+    transition: all 0.4s ease;
+}
+
+.hero-btn:hover {
+    background-color: transparent;
+    color: #54b84d;
+}
+
+.category .category-text {
+    position: relative;
+    top: -30px;
+    left: 10px;
+}
+
+.category .category-img {
+    height: 27vh;
+    transition: all 0.1s ease;
+}
+
+.category .category-img:hover {
+    opacity: 0.6;
+}
+
+.point {
+    min-height: 60vh;
+    background-color: #F7F7F7;   
+}
+
+.point .icon {
+    color: white;
+    font-size: 25px;
+    padding: 25px;
+    border-radius: 100%;
+    background-color: #3ea202;
+}
+
+footer {
+    background-color: #212121;
+    min-height: 40vh;
+}
+
+.about {
+    min-height: 70vh;
+    background-color: #F7F7F7;
+}
+
+.login-modify, .register-modify {
+    min-height: 70vh;
+}

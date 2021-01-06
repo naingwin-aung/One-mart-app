@@ -19,7 +19,7 @@
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top pt-0 pb-0">
             <div class="container-fluid px-5">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{url('/')}}">
                     <img src="{{asset('images/one-logo.jpg')}}" alt="Logo" height="70">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

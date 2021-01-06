@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       return view('categories.category');
+        $categories = Category::all();
+       return view('categories.category', compact('categories'));
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.category_create');
     }
 
     /**
@@ -33,20 +37,17 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
-    }
+        $cateogry = new Category();
+        $cateogry->name = $request->name;
+        $imageName = date('YmdHis'). "." . $request->category_image->getClientOriginalExtension();
+        $request->category_image->move(public_path('images'), $imageName);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $cateogry->image = $imageName;
+        $cateogry->save();
+
+        return redirect()->route('admin')->with('message', 'created');
     }
 
     /**
@@ -55,9 +56,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('categories.category_edit', compact('category'));
     }
 
     /**
@@ -67,9 +68,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        if($request->category_image) {
+            $imageName = date('YmdHis'). "." . $request->category_image->getClientOriginalExtension();
+            $request->category_image->move(public_path('images'), $imageName);
+            $category->image = $imageName;
+        }  
+        $category->save();
+
+        return redirect()->route('admin')->with('message', "updated");
     }
 
     /**
@@ -78,8 +87,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin')->with('message', "deleted");
     }
 }

@@ -18,14 +18,14 @@
     </h1>
     <div class="container mt-5">
         <div class="row slider">
-            @for ($i = 0; $i < 19; $i++)
+            @foreach ($categories as $category)
                 <div class="col-6 col-md-3 px-3">
                     <a href="#"> 
-                        <img src="{{url('/images/mobile.jpeg')}}" alt="mobile" class="img-fluid category-img rounded-3">
+                        <img src="{{url('/images/'.$category->image)}}" alt="{{$category->name}}" class="img-fluid category-img rounded-3">
                     </a>
-                    <p class="category-text text-white">Mobile</p>
+                    <p class="category-text text-white">{{$category->name}}</p>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 </section>

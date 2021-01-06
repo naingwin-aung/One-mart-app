@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/products';
+    protected $redirectTo = '/user/products';
 
     /**
      * Create a new controller instance.
@@ -53,9 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            'phone' => ['required','unique:users', 'min:10'],
+            'phone' => ['required','unique:users', 'numeric', 'digits_between:10,11'],
         ], [
-            'phone.min' => 'The phone must be at least 10 numbers',
+            'phone.digits_between' => 'Your phone number is not invalid',
         ]);
     }
 

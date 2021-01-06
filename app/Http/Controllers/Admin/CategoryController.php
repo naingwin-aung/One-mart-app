@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-       return view('categories.category', compact('categories'));
+        return view('categories.category', compact('categories'));
     }
 
     /**
@@ -59,6 +59,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('categories.category_edit', compact('category'));
+
     }
 
     /**

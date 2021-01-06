@@ -35,9 +35,13 @@
                     <span class="list-group-item disabled d-none d-lg-block border-0">
                         <small>CONTROLS</small>
                     </span>
-                    <a href="{{route('admin')}}" class="list-group-item list-group-item-action active rounded-0 border-0">
+                    <a href="{{route('user')}}" class="list-group-item list-group-item-action active rounded-0 border-0">
                         <i class="fas fa-home"></i>
-                        <span class="d-none d-lg-inline">Category</span>
+                        <span class="d-none d-lg-inline">Product</span>
+
+                        @if (Request::segment(3) == '')
+                            <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($products)}}</span>
+                        @endif
                     </a>
 
                     <a href="#" class="list-group-item list-group-item-action">

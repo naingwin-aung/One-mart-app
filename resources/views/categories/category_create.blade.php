@@ -3,7 +3,7 @@
 @section('content')
     <div class="container my-5">
         <div class="card p-3">
-            <form action="{{url('categories')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('/admin/categories')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mb-4">
                     <label for="category_name" class="fw-bold">Category Name</label>

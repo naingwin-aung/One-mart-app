@@ -13,12 +13,11 @@
         
         <div class="row">
             <div class="col-12">
-                <a href="{{url('/categories/create')}}" class="btn btn-success mb-4">New Category</a>
+                <a href="{{url('/admin/categories/create')}}" class="btn btn-success mb-4">New Category</a>
                 <div class="card p-3">
                     <table id="example" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Category Id</th>
                                 <th>Category Name</th>
                                 <th>Category created Time</th>
                                 <th>Category updated Time</th>
@@ -28,14 +27,13 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{$category->id}}</td>
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->created_at->diffForHumans()}} - {{$category->created_at->toFormattedDateString()}} - {{$category->created_at->format('H:i:s')}}</td>
 
                                     <td>{{$category->updated_at->toFormattedDateString()}} - {{$category->updated_at->format('H:i:s')}}</td>
                                     <td>
-                                        <a href="{{url("/categories/$category->id/edit")}}" class="btn btn-outline-warning">Edit</a>
-                                        <form action="{{url("/categories/$category->id")}}" method="POST" class="d-inline">
+                                        <a href="{{url("/admin/categories/$category->id/edit")}}" class="btn btn-outline-warning">Edit</a>
+                                        <form action="{{url("/admin/categories/$category->id")}}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this category')">Delete</button>

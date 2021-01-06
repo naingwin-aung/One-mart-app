@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -14,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       return view('products.product');
+        $products = Product::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        return view('products.product', compact('products'));
     }
 
     /**
@@ -24,7 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('products.product_create', compact('categories'));
     }
 
     /**
@@ -33,20 +39,25 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
-    }
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $imageName = date('YmdHis'). "." . $request->product_image->getClientOriginalExtension();
+        $request->product_image->move(public_path('images'), $imageName);
+
+        $product->image = $imageName;
+
+        $product->category_id = $request->category_id;
+        $product->phone = $request->phone;
+
+        $product->user_id = auth()->user()->id;
+
+        $product->save();
+        return redirect()->route('user')->with('message', 'posted');
     }
 
     /**
@@ -55,9 +66,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('products.product_edit', compact('product', 'categories'));
     }
 
     /**
@@ -67,9 +79,25 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        if($request->product_image) {
+            $imageName = date('YmdHis'). "." . $request->product_image->getClientOriginalExtension();
+            $request->product_image->move(public_path('images'), $imageName);
+            $product->image = $imageName;
+        }
+
+        if($request->phone) {
+            $product->phone = $request->phone;
+        }
+
+        $product->save();
+        
+        return redirect()->route('user')->with('message', 'updated');
     }
 
     /**
@@ -78,8 +106,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('user')->with('message', 'deleted');
+
     }
 }

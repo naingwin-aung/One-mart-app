@@ -21,11 +21,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/about', 'about');
 
 
-Route::resource('/categories', App\Http\Controllers\Admin\CategoryController::class)->names([
+Route::resource('/admin/categories', App\Http\Controllers\Admin\CategoryController::class)->names([
     'index' => 'admin',
     ])->middleware('admin');
+
+Route::get('/admin/product', [App\Http\Controllers\Admin\ProductController::class, 'index'])->middleware('admin');
     
-Route::resource('/products', App\Http\Controllers\User\ProductController::class)->names([
+Route::resource('/user/products', App\Http\Controllers\User\ProductController::class)->names([
     'index' => 'user',
     ])->middleware('user');
         

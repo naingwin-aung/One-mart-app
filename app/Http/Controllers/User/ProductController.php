@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
-        return view('products.product', compact('products'));
+        return view('user.products.product', compact('products'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('products.product_create', compact('categories'));
+        return view('user.products.product_create', compact('categories'));
     }
 
     /**
@@ -69,7 +69,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        return view('products.product_edit', compact('product', 'categories'));
+        return view('user.products.product_edit', compact('product', 'categories'));
     }
 
     /**

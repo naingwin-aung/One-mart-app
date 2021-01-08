@@ -45,7 +45,7 @@
 
                     <a href="{{url('/admin/product')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'product' ? 'active' : ''}}">
                         <span class="d-none d-lg-inline">Product</span>
-                        @if (Request::segment(2) == 'product')
+                        @if (Request::segment(2) == 'product' && Request::segment(3) == '')
                             <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($products)}}</span>
                         @endif
                     </a>

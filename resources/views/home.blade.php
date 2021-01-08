@@ -20,7 +20,7 @@
         <div class="row slider">
             @foreach ($categories as $category)
                 <div class="col-6 col-md-3 px-3">
-                    <a href="#"> 
+                    <a href="{{url("/category/$category->id/all")}}"> 
                         <img src="{{url('/images/'.$category->image)}}" alt="{{$category->name}}" class="img-fluid category-img rounded-3">
                     </a>
                     <p class="category-text text-white">{{$category->name}}</p>

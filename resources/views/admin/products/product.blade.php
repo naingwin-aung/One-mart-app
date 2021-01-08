@@ -30,7 +30,7 @@
 
                                     <td>{{$product->updated_at->toFormattedDateString()}} - {{$product->updated_at->format('H:i:s')}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-outline-warning">View</a>
+                                        <a href="{{url("/admin/product/$product->id")}}" class="btn btn-outline-primary">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach

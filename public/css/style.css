@@ -111,3 +111,7 @@ footer {
 .product-all .p-name:hover {
     text-decoration: underline;
 }
+
+.product-detail {
+    height: 70vh;
+}

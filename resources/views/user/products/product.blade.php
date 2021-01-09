@@ -31,7 +31,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->description}}</td>
-                                    <td>{{$product->phone}}</td>
+                                    <td>0{{$product->phone}}</td>
 
                                     <td>{{$product->created_at->diffForHumans()}} - {{$product->created_at->toFormattedDateString()}} - {{$product->created_at->format('H:i:s')}}</td>
 

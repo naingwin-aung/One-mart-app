@@ -22,6 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/about', 'about');
 Route::get('/category/{category_id}/all', [HomeController::class, 'all'])->name('all');
 Route::post('/category/{category_id}/all', [HomeController::class, 'all'])->name('all');
+Route::get('/product/detail/{product}', [HomeController::class, 'detail'])->name('detail');
+Route::get('user/detail/{user_id}', [HomeController::class, 'userDetail'])->name('user.detail');
 
 #Admin Panel
 Route::resource('/admin/categories', App\Http\Controllers\Admin\CategoryController::class)->names([
@@ -35,6 +37,8 @@ Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductContro
 Route::resource('/user/products', App\Http\Controllers\User\ProductController::class)->names([
     'index' => 'user',
     ])->middleware('user');
+Route::get('/user/change/{user_id}', [App\Http\Controllers\User\UserController::class, 'changePasswordForm']);
+Route::put('/user/change/{user_id}', [App\Http\Controllers\User\UserController::class, 'changePassword']);
         
 #Auth
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

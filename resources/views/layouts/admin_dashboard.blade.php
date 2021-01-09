@@ -49,16 +49,6 @@
                             <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($products)}}</span>
                         @endif
                     </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-chart-line"></i>
-                        <span class="d-none d-lg-inline">Statistics</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-flag"></i>
-                        <span class="d-none d-lg-inline">Reports</span>
-                    </a>
                 </div>
 
 
@@ -69,16 +59,6 @@
                     <a href="#" class="list-group-item list-group-item-action">
                         <i class="fas fa-user"></i>
                         <span class="d-none d-lg-inline">New User</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-edit"></i>
-                        <span class="d-none d-lg-inline">Update Data</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="far fa-calendar-alt"></i>
-                        <span class="d-none d-lg-inline">Add Events</span>
                     </a>
                 </div>
             </nav>

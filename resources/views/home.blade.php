@@ -34,17 +34,12 @@
 <section class="point mt-5 d-flex align-items-center">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 text-center">
-                <i class="fas fa-truck icon rounded-full"></i>
-                <h4 class="mt-3 mb-4 fw-bold">Deliver service Shi thi</h4>
-                <p text-muted>ရောင်းသူဝယ်သူ တိုက်ရိုက်ဆက်သွယ်</p>
-            </div>
-            <div class="col-12 col-md-4 text-center">
+            <div class="col-12 col-md-6 text-center">
                 <i class="fa fa-check-square icon"></i>
                 <h4 class="mt-3 mb-4 fw-bold">သုံးရလွယ်တယ်</h4>
                 <p text-muted>လိုချင်တာရှာဖို့ လွယ်ကူ၊ လျှင်မြန်</p>
             </div>
-            <div class="col-12 col-md-4 text-center">
+            <div class="col-12 col-md-6 text-center">
                 <i class="fas fa-shopping-cart icon"></i>
                 <h4 class="mt-3 mb-4 fw-bold">အမြန်ရောင်းထွက်တယ်</h4>
                 <p text-muted>ဓာတ်ပုံရိုက်၊ ကြော်ငြာတင်၊ ရောင်း!</p>

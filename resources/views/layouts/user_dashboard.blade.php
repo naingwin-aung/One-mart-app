@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -32,9 +32,6 @@
                     </span>
                 </h1>
                 <div class="list-group text-center text-lg-start">
-                    <span class="list-group-item disabled d-none d-lg-block border-0">
-                        <small>CONTROLS</small>
-                    </span>
                     <a href="{{route('user')}}" class="list-group-item list-group-item-action active rounded-0 border-0">
                         <i class="fas fa-home"></i>
                         <span class="d-none d-lg-inline">Product</span>
@@ -42,43 +39,6 @@
                         @if (Request::segment(3) == '')
                             <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($products)}}</span>
                         @endif
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-users"></i>
-                        <span class="d-none d-lg-inline">Users</span>
-                        <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">20</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-chart-line"></i>
-                        <span class="d-none d-lg-inline">Statistics</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-flag"></i>
-                        <span class="d-none d-lg-inline">Reports</span>
-                    </a>
-                </div>
-
-
-                <div class="list-group text-center text-lg-start">
-                    <span class="list-group-item disabled d-none d-lg-block">
-                        <small>ACTIONS</small>
-                    </span>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user"></i>
-                        <span class="d-none d-lg-inline">New User</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-edit"></i>
-                        <span class="d-none d-lg-inline">Update Data</span>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="far fa-calendar-alt"></i>
-                        <span class="d-none d-lg-inline">Add Events</span>
                     </a>
                 </div>
             </nav>
@@ -90,10 +50,14 @@
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 @if (Auth::user())
                                     {{Auth::user()->name}}
+                                
                                 @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-start">
                               <li><a href="{{route('logout')}}" class="dropdown-item">Logout</a></li>
+                              <?php $user_id = Auth::user()->id; ?>
+
+                              <li><a href="{{url("/user/change/{$user_id}")}}" class="dropdown-item">Change Password</a></li>
                             </ul>
                         </li>
                     </div>

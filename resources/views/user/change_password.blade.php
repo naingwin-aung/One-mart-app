@@ -5,8 +5,6 @@
         <div class="card p-3">
             <form action="" method="POST">
                 @csrf
-                @method("PUT")
-                <input type="hidden" name="user_id" value="{{$user_id}}">
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
     

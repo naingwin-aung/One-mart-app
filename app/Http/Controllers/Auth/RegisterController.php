@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'phone' => ['required','unique:users', 'numeric', 'digits_between:10,11'],
+            'image' => ['image'],
         ], [
             'phone.digits_between' => 'Your phone number is not invalid',
         ]);
@@ -73,6 +74,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => 0,
             'phone' => $data['phone'],
+            'image' => 'user.png',
         ]);
     }
 }

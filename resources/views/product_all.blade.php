@@ -31,7 +31,7 @@
                     <div class="col-6 col-md-3 mb-4">
                         <div class="card rounded-0" style="width: 100%;">
                             <a href="{{url("/product/detail/$product->id")}}">
-                                <img src="{{url('/images/'.$product->image)}}" class="img-card rounded-0" alt="{{$product->name}}">
+                                <img src="{{url('/images/'.$product->image)}}" class="product-card rounded-0" alt="{{$product->name}}">
                             </a>
                             <div class="card-body d-flex flex-column justify-content-center">
                                 <a href="{{url("/product/detail/$product->id")}}" class="p-name text-muted">

@@ -36,7 +36,7 @@
                         <i class="fas fa-home"></i>
                         <span class="d-none d-lg-inline">Product</span>
 
-                        @if (Request::segment(3) == '')
+                        @if (Request::segment(2) == 'products' && Request::segment(3) == '')
                             <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($products)}}</span>
                         @endif
                     </a>
@@ -50,14 +50,15 @@
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 @if (Auth::user())
                                     {{Auth::user()->name}}
-                                
                                 @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-start">
-                              <li><a href="{{route('logout')}}" class="dropdown-item">Logout</a></li>
-                              <?php $user_id = Auth::user()->id; ?>
+                            <li><a href="{{url("/user/profile")}}" class="dropdown-item">Profile</a></li>
 
-                              <li><a href="{{url("/user/change/{$user_id}")}}" class="dropdown-item">Change Password</a></li>
+                            <li><a href="{{url("/user/change")}}" class="dropdown-item">Change Password</a></li>
+                            
+                            <li><a href="{{route('logout')}}" class="dropdown-item">Logout</a></li>
+                            <?php $user_id = Auth::user()->id; ?>
                             </ul>
                         </li>
                     </div>

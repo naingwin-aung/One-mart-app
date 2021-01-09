@@ -13,9 +13,11 @@
 
 <!--Category-->
 <section class="category my-5">
-    <h1 class="text-center pb-4 fw-bold">
+    <h2 class="text-center pb-4 fw-bold">
         ပစ္စည်းအမျိုးအစားများ
-    </h1>
+    </h2>
+    <div class="coloredline mt-0"></div>
+
     <div class="container mt-5">
         <div class="row slider">
             @foreach ($categories as $category)

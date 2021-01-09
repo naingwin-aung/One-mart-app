@@ -20,7 +20,7 @@ class HomeController extends Controller
         return view('home', compact('categories'));
     }
     
-    public function all(Request $request, $category_id)
+    public function categoryAll(Request $request, $category_id)
     {
         if($request->searchkey) {
             $products = Product::query()->where('name', 'LIKE', "%{$request->searchkey}%")->where('category_id', $category_id)->paginate('4');
@@ -31,8 +31,14 @@ class HomeController extends Controller
         return view('product_all', compact('products'));
     }
 
-    public function detail(Product $product)
+    public function productDetail(Product $product)
     {
-        return view('show', compact('product'));
+        return view('product_show', compact('product'));
+    }
+
+    public function userDetail(User $user)
+    {
+        $products = Product::where('user_id', $user->id)->paginate('4');
+        return view('user_detail', compact('user', 'products'));
     }
 }

@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'role' => 1,
             'phone' => '0974328743',
             'password' => Hash::make('password'),
+            'image' => 'user.png',
         ]);
 
         DB::table('users')->insert([
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'role' => 0,
             'phone' => '094565654',
             'password' => Hash::make('password'),
+            'image' => 'user.png',
         ]);
     }
 }

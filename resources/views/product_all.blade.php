@@ -24,9 +24,9 @@
 
             <?php $cat = explode("/", $_SERVER['PATH_INFO'])[2] ?>
 
-            <a href="{{url("/category/{$cat}/all")}}" class="text-decoration-none text-success fs-bold border-2 border-bottom">All products for this category</a>
+            <a href="{{url("/category/{$cat}/all")}}" class="text-decoration-none fs-bold btn btn-success">All products for this category</a>
 
-            <div class="row mt-4">
+            <div class="row mt-5">
                 @foreach ($products as $product)
                     <div class="col-6 col-md-3 mb-4">
                         <div class="card rounded-0" style="width: 100%;">

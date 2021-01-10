@@ -26,6 +26,8 @@ class RedirectIfAuthenticated
                 return redirect()->route('admin');
             } else if (Auth::guard($guard)->check() && auth()->user()->role == 0){
                 return redirect()->route('user');
+            }else if (Auth::guard($guard)->check() && auth()->user()->role == 2){
+                return redirect()->route('delivery');
             }
         }
 

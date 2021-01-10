@@ -33,9 +33,15 @@
                     <li class="nav-item me-3">
                     <a class="nav-link active" href="{{url('/about')}}">သိရှိရန်</a>
                     </li>
-                    <li class="nav-item me-2">
-                    <a class="nav-link active" href="{{route('login')}}">ရောင်းမည်</a>
-                    </li>
+                    @guest
+                      <li class="nav-item me-2">
+                      <a class="nav-link active" href="{{route('login')}}">ရောင်းမည်</a>
+                      </li>
+                    @else
+                      <li class="nav-item me-2">
+                        <a class="nav-link active" href="{{route('login')}}"> <img src="{{url('/images/'.auth()->user()->image)}}" alt="{{auth()->user()->name}}" class="rounded-circle shadow-sm" width="35" height="35"> </a>
+                      </li>
+                    @endguest
                 </ul>
                 </div>
             </div>

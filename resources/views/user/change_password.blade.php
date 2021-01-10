@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <div class="card p-3">
+        <div class="card p-5 border-0 shadow">
             <form action="" method="POST">
                 @csrf
                 <div class="form-group row">
@@ -27,8 +27,9 @@
                     </div>
                 </div>
     
-                <div class="d-flex justify-content-end">
-                    <button class="btn btn-success active">Change Password</button>
+                <div class="d-flex justify-content-between">
+                    <a href="{{route("user")}}" class="btn btn-warning">Back</a>
+                    <button class="btn btn-success">Change Password</button>
                 </div>
             </form>
         </div>

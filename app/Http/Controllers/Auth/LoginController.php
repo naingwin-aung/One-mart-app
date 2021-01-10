@@ -47,11 +47,13 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+        if(auth()->attempt(['email' => $input['email'], 'password' => $input['password']])) {
             if(auth()->user()->role == 1) {
                 return redirect()->route('admin');
             } else if(auth()->user()->role == 0){
                 return redirect()->route('user');
+            } else if(auth()->user()->role == 2) {
+                return redirect()->route('delivery');
             }
         } else {
             return back()->with('login_error', 'Check you email and password');

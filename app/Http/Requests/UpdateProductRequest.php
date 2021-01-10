@@ -26,7 +26,6 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'price' => 'required|numeric',
-            'phone' => 'numeric|digits_between:10,11',
         ];
     }
 
@@ -35,8 +34,6 @@ class UpdateProductRequest extends FormRequest
         return [
             'name.required' => "Your product name cannot be empty",
             'price.required' => 'Product price cannot be empty',
-            'phone.numeric' => 'Phone number must be numbers',
-            'phone.digits_between' => 'Your Phone number is not vaild',
         ];
     }
 }

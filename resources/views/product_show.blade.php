@@ -5,6 +5,7 @@
     <div class="mt-5 pt-2"></div>
 
     <div class="py-5 container d-flex flex-column justify-content-center">
+
         <div class="row">
             <div class="col-12 col-md-5 mt-4 mb-3">
                 <img src="{{url('/images/'.$product->image)}}" alt="$product->name" width="450" height="450">
@@ -14,7 +15,14 @@
                 <h3>{{$product->name}}</h3>
                 <p class="mt-2 mb-4">Price: <b>{{$product->price}}</b></p>
                 <p>{{$product->description}}</p>
-                <p>Phone Number to contact: <b>0{{$product->phone}}</b></p>
+                <p class="mb-5">Phone Number to contact: <b>0{{$product->phone}}</b></p>
+
+                <form action="{{url("delivery")}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" id="" value="{{$product->id}}">
+
+                    <button class="btn btn-success active">Deliver Service Ya U mal</button>
+                </form>
 
                 <hr>
 

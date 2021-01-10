@@ -32,5 +32,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'image' => 'user.png',
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'deliver',
+            'email' => 'deliver@gmail.com',
+            'role' => 2,
+            'phone' => '09838437488',
+            'password' => Hash::make('password'),
+            'image' => 'user.png',
+        ]);
     }
 }

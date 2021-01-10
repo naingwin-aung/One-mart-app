@@ -24,6 +24,8 @@ Route::get('/category/{category_id}/all', [HomeController::class, 'categoryAll']
 Route::post('/category/{category_id}/all', [HomeController::class, 'categoryAll'])->name('all');
 Route::get('/product/detail/{product}', [HomeController::class, 'productDetail'])->name('detail');
 Route::get('user/detail/{user}', [HomeController::class, 'userDetail'])->name('user.detail');
+Route::post('delivery', [HomeController::class, 'delivery'])->middleware('auth');
+
 
 #Admin Panel
 Route::resource('/admin/categories', App\Http\Controllers\Admin\CategoryController::class)->names([
@@ -43,7 +45,9 @@ Route::post('/user/change', [App\Http\Controllers\User\UserController::class, 'c
 
 Route::get('/user/profile', [App\Http\Controllers\User\UserController::class, 'profileForm']);
 Route::post('/user/profile', [App\Http\Controllers\User\UserController::class, 'userProfile']);
-        
+
+#Delivery
+Route::get('/delivery', [App\Http\Controllers\Deliver\DeliverController::class, 'index'])->name('delivery')->middleware('deliver');
 
 #Auth
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

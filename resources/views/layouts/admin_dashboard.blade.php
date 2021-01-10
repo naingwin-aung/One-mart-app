@@ -50,17 +50,6 @@
                         @endif
                     </a>
                 </div>
-
-
-                <div class="list-group text-center text-lg-start">
-                    <span class="list-group-item disabled d-none d-lg-block">
-                        <small>ACTIONS</small>
-                    </span>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <i class="fas fa-user"></i>
-                        <span class="d-none d-lg-inline">New User</span>
-                    </a>
-                </div>
             </nav>
 
             <main class="col-10 p-0">

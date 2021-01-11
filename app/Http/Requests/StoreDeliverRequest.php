@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserProfileRequest extends FormRequest
+class StoreDeliverRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,9 @@ class UserProfileRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'user_image' => 'image',
+            'phone' => 'required|numeric|digits_between:10,11',
+            'user_image' => 'required|image',
+            'password' => 'required|string|min:8',
         ];
     }
 }

@@ -11,7 +11,17 @@ class DeliverController extends Controller
 {
     public function index()
     {
-        // Auth::logout();
-        // return redirect()->route('login');
+        $orders = Order::get()->filter(function ($order) {
+            return $order->status == 2;
+        });
+
+        return view('deliverers.order', compact('orders'));
+    }
+
+    public function delivering(Order $order)
+    {
+        $order->status = config('deliver.delivery_status.delivering');
+        $order->save();
+        return redirect()->route('delivery')->with('message', 'delivering');
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Deliverer Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -32,30 +32,13 @@
                     </span>
                 </h1>
                 <div class="list-group text-center text-lg-start">
-                    <span class="list-group-item disabled d-none d-lg-block border-0">
-                        <small>CONTROLS</small>
-                    </span>
-                    <a href="{{route('admin')}}" class="list-group-item list-group-item-action rounded-0 border-0 {{Request::segment(2) == 'categories' ? 'active' : ''}}">
+                    <a href="{{route('user')}}" class="list-group-item list-group-item-action active rounded-0 border-0">
                         <i class="fas fa-home"></i>
-                        <span class="d-none d-lg-inline">Category</span>
-                        @if (Request::segment(2) == 'categories' && Request::segment(3) == '')
-                            <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($categories)}}</span>
-                        @endif
-                    </a>
-
-                    <a href="{{url('/admin/product')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'product' ? 'active' : ''}}">
-                        <span class="d-none d-lg-inline">Product</span>
-                        @if (Request::segment(2) == 'product' && Request::segment(3) == '')
-                            <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($products)}}</span>
-                        @endif
-                    </a>
-
-                    <a href="{{url('/admin/deliverer')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'deliverer' ? 'active' : ''}}">
-                        <span class="d-none d-lg-inline">Deliverer</span>
-                    </a>
-
-                    <a href="{{url('/admin/order')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'order' ? 'active' : ''}}">
                         <span class="d-none d-lg-inline">Order</span>
+
+                        {{-- @if (Request::segment(2) == 'order')
+                            <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($orders)}}</span>
+                        @endif --}}
                     </a>
                 </div>
             </nav>
@@ -70,7 +53,7 @@
                                 @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-start">
-                              <li><a href="{{route('logout')}}" class="dropdown-item">Logout</a></li>
+                                <li><a href="{{route('logout')}}" class="dropdown-item">Logout</a></li>
                             </ul>
                         </li>
                     </div>
@@ -94,6 +77,8 @@
     $(document).ready(function() {
         $('#example').DataTable({
             'info' : false,
+            'searching' : false,
+            'ordering' : false,
         });
     } );
 </script>

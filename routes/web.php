@@ -34,7 +34,13 @@ Route::resource('/admin/categories', App\Http\Controllers\Admin\CategoryControll
 
 Route::get('/admin/product', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.product')->middleware('admin');
 Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->middleware('admin');
-    
+Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->middleware('admin');
+Route::resource('/admin/deliverer', App\Http\Controllers\Admin\DelivererController::class)->names([
+    'index' => 'deliverer',
+])->middleware('admin');
+Route::get('/admin/order', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('orders');
+Route::get('/admin/order/{order}/approve', [App\Http\Controllers\Admin\OrderController::class, 'approve']);
+Route::get('/admin/order/{order}/cancel', [App\Http\Controllers\Admin\OrderController::class, 'cancel']);
 
 #User Panel
 Route::resource('/user/products', App\Http\Controllers\User\ProductController::class)->names([
@@ -48,6 +54,8 @@ Route::post('/user/profile', [App\Http\Controllers\User\UserController::class, '
 
 #Delivery
 Route::get('/delivery', [App\Http\Controllers\Deliver\DeliverController::class, 'index'])->name('delivery')->middleware('deliver');
+Route::get('/delivery/order/{order}/delivering', [App\Http\Controllers\Deliver\DeliverController::class, 'delivering']);
+
 
 #Auth
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

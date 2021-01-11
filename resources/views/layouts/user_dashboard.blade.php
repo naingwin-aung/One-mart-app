@@ -58,7 +58,6 @@
                             <li><a href="{{url("/user/change")}}" class="dropdown-item">Change Password</a></li>
                             
                             <li><a href="{{route('logout')}}" class="dropdown-item">Logout</a></li>
-                            <?php $user_id = Auth::user()->id; ?>
                             </ul>
                         </li>
                     </div>

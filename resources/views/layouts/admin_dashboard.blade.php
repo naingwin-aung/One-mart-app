@@ -26,7 +26,7 @@
         <div class="row g-0">
             <nav class="col-2 px-1 side-menu">
                 <h1 class="h5 py-3 text-center text-white">
-                    <img src="{{url('/images/one-logo.jpg')}}" alt="" height="50" class="rounded">
+                    <a href="{{route('admin')}}"><img src="{{url('/images/one-logo.jpg')}}" alt="" height="50" class="rounded"></a>
                     <span class="d-none d-md-inline">
                         ONE MART
                     </span>
@@ -51,11 +51,31 @@
                     </a>
 
                     <a href="{{url('/admin/deliverer')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'deliverer' ? 'active' : ''}}">
-                        <span class="d-none d-lg-inline">Deliverer</span>
+                        <span class="d-none d-lg-inline">Deliverers</span>
                     </a>
 
-                    <a href="{{url('/admin/order')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'order' ? 'active' : ''}}">
-                        <span class="d-none d-lg-inline">Order</span>
+                    <span class="list-group-item disabled d-none d-lg-block border-0">
+                        <small>Orders items</small>
+                    </span>
+
+                    <a href="{{url('/admin/order')}}" class="list-group-item list-group-item-action {{Request::segment(2) == 'order' && Request::segment(3) == '' ? 'active' : ''}}">
+                        <span class="d-none d-lg-inline">Orders</span>
+
+                    @if (Request::segment(2) == 'order' && Request::segment(3) == '')
+                        <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($orders)}}</span>
+                    @endif
+                    </a>
+
+                    <a href="{{url('/admin/order/cancel')}}" class="list-group-item list-group-item-action {{Request::segment(3) == 'cancel' ? 'active' : ''}}">
+                        <span class="d-none d-lg-inline">Cancel Orders</span>
+                    </a>
+
+                    <a href="{{url('/admin/order/delivering')}}" class="list-group-item list-group-item-action {{Request::segment(3) == 'delivering' ? 'active' : ''}}">
+                        <span class="d-none d-lg-inline">Delivering Orders</span>
+                    </a>
+
+                    <a href="{{url('/admin/order/done')}}" class="list-group-item list-group-item-action {{Request::segment(3) == 'done' ? 'active' : ''}}">
+                        <span class="d-none d-lg-inline">Finish Orders</span>
                     </a>
                 </div>
             </nav>

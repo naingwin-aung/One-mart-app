@@ -11,6 +11,11 @@ use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('user');        
+    }
+
     /**
      * Display a listing of the resource.
      *

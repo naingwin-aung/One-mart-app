@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card p-3">
-                    <table id="example" class="table table-bordered">
+                    <table id="example1" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Product Name</th>
@@ -41,3 +41,12 @@
         </div>
     </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example1').DataTable({
+            'ordering' : false,
+        });
+    } );
+</script>

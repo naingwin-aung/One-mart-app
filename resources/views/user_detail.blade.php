@@ -21,7 +21,7 @@
             ​ကြော်ငြာများ
         </h2>
         <div class="coloredline mt-0"></div>
-        <div class="row mt-4">
+        <div class="row mt-4 user-detail">
             @foreach ($products as $product)
                 <div class="col-6 col-md-3 mb-4">
                     <div class="card rounded-0" style="width: 100%;">

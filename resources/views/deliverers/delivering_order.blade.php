@@ -6,7 +6,7 @@
 
         @if (session('message'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                Order is <strong>{{session('message')}}</strong>
+                Order has already <strong>{{session('message')}}</strong>!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -32,7 +32,7 @@
                                     <td>{{$order->user->name}}</td>
                                     <td>0{{$order->user->phone}}</td>
                                     <td>
-                                        <a href="{{url("/delivery/order/$order->id/delivering")}}" class="btn btn-outline-info">Delivering</a>
+                                        <a href="{{url("/delivery/order/$order->id/done")}}" class="btn btn-outline-success">Done</a>
                                     </td>
                                 </tr>
                             @endforeach

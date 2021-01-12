@@ -21,7 +21,7 @@
                     @csrf
                     <input type="hidden" name="product_id" id="" value="{{$product->id}}">
 
-                    <button class="btn btn-success active">Deliver Service Ya U mal</button>
+                    <button class="btn btn-success">Deliver Service Ya u mal</button>
                 </form>
 
                 <hr>

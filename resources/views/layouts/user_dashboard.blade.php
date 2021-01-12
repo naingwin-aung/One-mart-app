@@ -26,7 +26,8 @@
         <div class="row g-0">
             <nav class="col-2 px-1 side-menu">
                 <h1 class="h5 py-3 text-center text-white">
-                    <img src="{{url('/images/one-logo.jpg')}}" alt="" height="50" class="rounded">
+                    <a href="{{route('home')}}"><img src="{{url('/images/one-logo.jpg')}}" alt="" height="50" class="rounded"></a>
+                   
                     <span class="d-none d-md-inline">
                         ONE MART
                     </span>

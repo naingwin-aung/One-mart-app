@@ -1,27 +1,20 @@
-@extends('layouts.deliver_dashboard')
+@extends('layouts.admin_dashboard')
 
 @section('content')
 
     <div class="container-fluid my-5">
-
-        @if (session('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                Order is <strong>{{session('message')}}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        
         <div class="row">
             <div class="col-12">
                 <div class="card p-3">
-                    <table id="example" class="table table-bordered">
+                    <table id="example4" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Order Name</th>
                                 <th>Order's Price</th>
                                 <th>Order's User Name</th>
                                 <th>Order's User Phone</th>
-                                <th>Action</th>
+                                <th>Phone Number to contact of order</th>
+                                <th>Delivery Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,9 +24,8 @@
                                     <td>{{$order->product->price}}</td>
                                     <td>{{$order->user->name}}</td>
                                     <td>0{{$order->user->phone}}</td>
-                                    <td>
-                                        <a href="{{url("/delivery/order/$order->id/delivering")}}" class="btn btn-outline-info">Delivering</a>
-                                    </td>
+                                    <td>0{{$order->product->phone}}</td>
+                                    <td>{{$order->updated_at->toFormattedDateString()}} - {{$order->updated_at->format('H:i:s')}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -43,3 +35,11 @@
         </div>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example4').DataTable({
+            'ordering' : false,
+        });
+    } );
+</script>

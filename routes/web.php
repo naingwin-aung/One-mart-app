@@ -30,31 +30,41 @@ Route::post('delivery', [HomeController::class, 'delivery'])->middleware('auth')
 #Admin Panel
 Route::resource('/admin/categories', App\Http\Controllers\Admin\CategoryController::class)->names([
     'index' => 'admin',
-    ])->middleware('admin');
+    ]);
 
-Route::get('/admin/product', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.product')->middleware('admin');
-Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->middleware('admin');
-Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->middleware('admin');
+Route::get('/admin/product', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.product');
+Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show']);
+Route::get('/admin/product/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show']);
+
 Route::resource('/admin/deliverer', App\Http\Controllers\Admin\DelivererController::class)->names([
     'index' => 'deliverer',
-])->middleware('admin');
+]);
+
 Route::get('/admin/order', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('orders');
 Route::get('/admin/order/{order}/approve', [App\Http\Controllers\Admin\OrderController::class, 'approve']);
 Route::get('/admin/order/{order}/cancel', [App\Http\Controllers\Admin\OrderController::class, 'cancel']);
 
+Route::get('/admin/order/cancel', [App\Http\Controllers\Admin\OrderController::class, 'orderCancel']);
+Route::get('/admin/order/delivering', [App\Http\Controllers\Admin\OrderController::class, 'orderDelivering']);
+Route::get('/admin/order/done', [App\Http\Controllers\Admin\OrderController::class, 'orderDone']);
+
+
 #User Panel
 Route::resource('/user/products', App\Http\Controllers\User\ProductController::class)->names([
     'index' => 'user',
-    ])->middleware('user');
-Route::view('/user/change', 'user.change_password');
+    ]);
+Route::view('/user/change', 'user.change_password')->middleware('user');
 Route::post('/user/change', [App\Http\Controllers\User\UserController::class, 'changePassword']);
 
 Route::get('/user/profile', [App\Http\Controllers\User\UserController::class, 'profileForm']);
 Route::post('/user/profile', [App\Http\Controllers\User\UserController::class, 'userProfile']);
 
 #Delivery
-Route::get('/delivery', [App\Http\Controllers\Deliver\DeliverController::class, 'index'])->name('delivery')->middleware('deliver');
+Route::get('/delivery/order', [App\Http\Controllers\Deliver\DeliverController::class, 'index'])->name('delivery');
+Route::get('/delivery/delivering', [App\Http\Controllers\Deliver\DeliverController::class, 'orderDeliveringItems'])->name('delivering.items');
+
 Route::get('/delivery/order/{order}/delivering', [App\Http\Controllers\Deliver\DeliverController::class, 'delivering']);
+Route::get('/delivery/order/{order}/done', [App\Http\Controllers\Deliver\DeliverController::class, 'done']);
 
 
 #Auth

@@ -26,19 +26,24 @@
         <div class="row g-0">
             <nav class="col-2 px-1 side-menu">
                 <h1 class="h5 py-3 text-center text-white">
-                    <img src="{{url('/images/one-logo.jpg')}}" alt="" height="50" class="rounded">
+                    <a href="{{route('home')}}"><img src="{{url('/images/one-logo.jpg')}}" alt="" height="50" class="rounded"></a>
                     <span class="d-none d-md-inline">
                         ONE MART
                     </span>
                 </h1>
                 <div class="list-group text-center text-lg-start">
-                    <a href="{{route('user')}}" class="list-group-item list-group-item-action active rounded-0 border-0">
+                    <a href="{{route('delivery')}}" class="list-group-item list-group-item-action rounded-0 border-0 {{Request::segment(2) == 'order' ? 'active' : ''}}">
                         <i class="fas fa-home"></i>
-                        <span class="d-none d-lg-inline">Order</span>
+                        <span class="d-none d-lg-inline">Ordered items</span>
 
-                        {{-- @if (Request::segment(2) == 'order')
+                        @if (Request::segment(2) == 'order')
                             <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">{{count($orders)}}</span>
-                        @endif --}}
+                        @endif
+                    </a>
+
+                    <a href="{{route('delivering.items')}}" class="list-group-item list-group-item-action rounded-0 border-0 {{Request::segment(2) == 'delivering' ? 'active' : ''}}">
+                        <i class="fas fa-truck"></i>
+                        <span class="d-none d-lg-inline">Delivering items</span>
                     </a>
                 </div>
             </nav>

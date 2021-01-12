@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card p-3">
-                    <table id="example" class="table table-bordered">
+                    <table id="example2" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Order Name</th>
@@ -31,8 +31,8 @@
                                     <td>{{$order->product->name}}</td>
                                     <td>{{$order->product->price}}</td>
                                     <td>{{$order->user->name}}</td>
-                                    <td>{{$order->user->phone}}</td>
-                                    <td>{{$order->product->phone}}</td>
+                                    <td>0{{$order->user->phone}}</td>
+                                    <td>0{{$order->product->phone}}</td>
                                     <td>
                                         <a href="{{url("/admin/order/$order->id/approve")}}" class="btn btn-outline-success">Approve</a>
                                         <a href="{{url("/admin/order/$order->id/cancel")}}" class="btn btn-outline-danger">Cancel</a>
@@ -46,3 +46,11 @@
         </div>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example2').DataTable({
+            'ordering' : false,
+        });
+    } );
+</script>

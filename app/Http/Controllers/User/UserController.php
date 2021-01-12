@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('user');        
+    }
+
     public function profileForm()
     {
         $user = User::where('id', auth()->user()->id)->first();

@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');        
+    }
+    
     public function index()
     {
         $orders = Order::get()->filter(function ($order) {
             return $order->status == 1;
         });
 
-        $status = array_flip(config('deliver.delivery_status'));
-
-        return view('admin.orders.order', compact('orders', 'status'));
+        return view('admin.orders.order', compact('orders'));
     }
 
     public function approve(Order $order)
@@ -31,5 +34,32 @@ class OrderController extends Controller
         $order->status = config('deliver.delivery_status.cancel');
         $order->save();
         return redirect()->route('orders')->with('message', 'cancel');
+    }
+
+    public function orderCancel()
+    {
+        $orders = Order::get()->filter(function ($orders) {
+            return $orders->status == 3;
+        });
+
+        return view('admin.orders.order_cancel', compact('orders'));
+    }
+
+    public function orderDelivering()
+    {
+        $orders = Order::orderBy('updated_at', 'DESC')->get()->filter(function ($orders) {
+            return $orders->status == 4;
+        });
+
+        return view('admin.orders.order_delivering', compact('orders'));
+    }
+
+    public function orderDone()
+    {
+        $orders = Order::orderBy('updated_at', 'DESC')->get()->filter(function ($orders) {
+            return $orders->status == 5;
+        });
+
+        return view('admin.orders.order_finish', compact('orders'));
     }
 }

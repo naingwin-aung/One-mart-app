@@ -82,6 +82,7 @@
     $(document).ready(function() {
         $('#example').DataTable({
             'info' : false,
+            'ordering' : false,
         });
     } );
 </script>

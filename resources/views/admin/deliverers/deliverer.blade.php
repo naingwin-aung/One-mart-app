@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->phone}}</td>
+                                    <td>0{{$user->phone}}</td>
                                     <td>
                                         <a href="{{url("/admin/deliverer/$user->id/edit")}}" class="btn btn-outline-warning">Edit</a>
                                         <form action="{{url("/admin/deliverer/$user->id")}}" method="POST" class="d-inline">

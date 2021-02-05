@@ -24,7 +24,7 @@ Route::get('/category/{category_id}/all', [HomeController::class, 'categoryAll']
 Route::post('/category/{category_id}/all', [HomeController::class, 'categoryAll'])->name('all');
 Route::get('/product/detail/{product}', [HomeController::class, 'productDetail'])->name('detail');
 Route::get('user/detail/{user}', [HomeController::class, 'userDetail'])->name('user.detail');
-Route::post('delivery', [HomeController::class, 'delivery'])->middleware('auth');
+Route::post('delivery', [HomeController::class, 'delivery']);
 
 
 #Admin Panel

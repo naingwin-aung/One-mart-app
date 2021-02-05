@@ -21,7 +21,9 @@
                     @csrf
                     <input type="hidden" name="product_id" id="" value="{{$product->id}}">
 
-                    <button class="btn btn-success">Deliver Service Ya u mal</button>
+                    @auth
+                        <button class="btn btn-success">Deliver Service Ya u mal</button>
+                    @endauth
                 </form>
 
                 <hr>

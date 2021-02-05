@@ -39,7 +39,7 @@
                       </li>
                     @else
                       <li class="nav-item me-2">
-                        <a class="nav-link active" href="{{route('login')}}"> <img src="{{url('/images/'.auth()->user()->image)}}" alt="{{auth()->user()->name}}" class="rounded-circle shadow-sm" width="35" height="35"> </a>
+                        <a class="nav-link active" href="{{route('user')}}"> <img src="{{url('/images/'.auth()->user()->image)}}" alt="{{auth()->user()->name}}" class="rounded-circle shadow-sm" width="38" height="38"> </a>
                       </li>
                     @endguest
                 </ul>

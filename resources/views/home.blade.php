@@ -37,18 +37,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-4 text-center">
-                <i class="fa fa-truck icon"></i>
                 <h4 class="mt-3 mb-4 fw-bold">Deliver Service</h4>
                 <p text-muted>အိမ်အရောက် ပို့</p>
             </div>
 
             <div class="col-12 col-md-4 text-center">
-                <i class="fa fa-check-square icon"></i>
                 <h4 class="mt-3 mb-4 fw-bold">သုံးရလွယ်တယ်</h4>
                 <p text-muted>လိုချင်တာရှာဖို့ လွယ်ကူ၊ လျှင်မြန်</p>
             </div>
             <div class="col-12 col-md-4 text-center">
-                <i class="fas fa-shopping-cart icon"></i>
                 <h4 class="mt-3 mb-4 fw-bold">အမြန်ရောင်းထွက်တယ်</h4>
                 <p text-muted>ဓာတ်ပုံရိုက်၊ ကြော်ငြာတင်၊ ရောင်း!</p>
             </div>

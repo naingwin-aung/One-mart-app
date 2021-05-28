@@ -27,4 +27,10 @@ class ChangePasswordRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
+
+    public function messages() {
+        return [
+            'password.confirmed' => "Password confirmation does not match! Please Try Again",
+        ];
+    }
 }
